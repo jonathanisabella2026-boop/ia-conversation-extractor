@@ -1,0 +1,327 @@
+/* ========================================
+   IA Extractor - DIGITAL SolutJon
+   Theme System: Dark / Light
+   ======================================== */
+
+:root[data-theme="dark"] {
+  --bg: #0b1120;
+  --panel: #151e32;
+  --surface: #1e293b;
+  --surface-hover: #23324a;
+  --border: #334155;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --accent: #38bdf8;
+  --accent2: #818cf8;
+  --user: #fbbf24;
+  --ai: #34d399;
+  --danger: #f87171;
+  --success: #34d399;
+  --input-bg: #0b1220;
+  --drag-over: rgba(56,189,248,0.15);
+  --shadow: rgba(0,0,0,0.3);
+}
+
+:root[data-theme="light"] {
+  --bg: #f8fafc;
+  --panel: #f1f5f9;
+  --surface: #ffffff;
+  --surface-hover: #e2e8f0;
+  --border: #cbd5e1;
+  --text: #1e293b;
+  --muted: #64748b;
+  --accent: #0284c7;
+  --accent2: #4f46e5;
+  --user: #b45309;
+  --ai: #059669;
+  --danger: #dc2626;
+  --success: #059669;
+  --input-bg: #ffffff;
+  --drag-over: rgba(2,132,199,0.15);
+  --shadow: rgba(0,0,0,0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* HEADER */
+.app-header {
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  transition: background 0.3s;
+}
+
+.brand { display: flex; align-items: center; gap: 0.75rem; }
+.logo { font-size: 1.5rem; }
+.brand h1 { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; }
+.brand small { color: var(--muted); font-size: 0.7rem; display: block; margin-top: -2px; }
+
+.toolbar { display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; }
+
+.btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.45rem 0.9rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.btn:hover { border-color: var(--accent); background: var(--surface-hover); }
+.btn.primary { background: linear-gradient(135deg, var(--accent), var(--accent2)); border: none; color: white; font-weight: 700; }
+.btn.primary:hover { opacity: 0.9; }
+.btn.danger { border-color: var(--danger); color: var(--danger); }
+.btn.danger:hover { background: rgba(220,38,38,0.1); }
+.btn.success { border-color: var(--success); color: var(--success); }
+.btn.success:hover { background: rgba(5,150,105,0.1); }
+.btn.small { padding: 0.3rem 0.6rem; font-size: 0.75rem; }
+
+.btn-select {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.45rem 0.7rem;
+  border-radius: 0.4rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+/* WORKSPACE */
+.workspace {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  min-height: 0;
+}
+
+.panel {
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  transition: background 0.3s;
+}
+
+.panel-header {
+  padding: 0.6rem 1rem;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  transition: background 0.3s;
+}
+.header-right { display: flex; align-items: center; gap: 0.75rem; }
+.sub-header { background: var(--bg); border-top: 1px solid var(--border); margin-top: 0.5rem; }
+
+.panel-body { flex: 1; overflow: auto; padding: 1rem; }
+
+textarea {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  color: var(--text);
+  border: none;
+  resize: none;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  outline: none;
+}
+
+.search-input {
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.35rem 0.7rem;
+  border-radius: 0.35rem;
+  font-size: 0.8rem;
+  width: 180px;
+  outline: none;
+}
+.search-input:focus { border-color: var(--accent); }
+
+.stats { font-size: 0.75rem; color: var(--muted); }
+
+/* BLOCKS */
+.blocks-list { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem 0.75rem 3rem;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.15s;
+  user-select: none;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.block:hover { border-color: var(--accent); transform: translateY(-1px); box-shadow: 0 2px 8px var(--shadow); }
+.block.selected { border-color: var(--success); }
+.block.selected::before { content: "☑"; color: var(--success); }
+.block::before {
+  content: "☐";
+  position: absolute;
+  left: 1rem;
+  top: 0.9rem;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+/* DRAG & DROP */
+.block.dragging {
+  opacity: 0.5;
+  transform: scale(0.98);
+  border: 2px dashed var(--accent);
+}
+.block.drag-over {
+  border-top: 3px solid var(--accent);
+  margin-top: 0.25rem;
+}
+.block .drag-handle {
+  position: absolute;
+  left: 0.3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: grab;
+  color: var(--muted);
+  font-size: 1rem;
+  padding: 0.2rem;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.block:hover .drag-handle { opacity: 1; }
+.block .drag-handle:active { cursor: grabbing; }
+
+.block-header {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.badge {
+  font-size: 0.65rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.badge-user { background: rgba(251,191,36,0.15); color: var(--user); }
+.badge-ai { background: rgba(52,211,153,0.15); color: var(--ai); }
+.badge-unknown { background: rgba(148,163,184,0.15); color: var(--muted); }
+.badge-type { background: rgba(56,189,248,0.15); color: var(--accent); }
+
+.block-content {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+.block-content pre {
+  margin-top: 0.5rem;
+  padding: 0.6rem;
+  background: var(--input-bg);
+  border-radius: 0.35rem;
+  overflow-x: auto;
+  font-size: 0.8rem;
+  border: 1px solid var(--border);
+}
+
+/* EDICIÓN INLINE */
+.block-edit {
+  display: none;
+  margin-top: 0.5rem;
+}
+.block-edit.active { display: block; }
+.block-edit textarea {
+  width: 100%;
+  min-height: 80px;
+  background: var(--input-bg);
+  border: 1px solid var(--accent);
+  border-radius: 0.35rem;
+  padding: 0.5rem;
+  color: var(--text);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8rem;
+  resize: vertical;
+}
+
+.block-actions {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.btn-toggle, .btn-edit {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+.btn-toggle:hover, .btn-edit:hover { color: var(--text); border-color: var(--accent); }
+
+/* PREVIEW */
+.preview-section { margin-top: 1rem; }
+.preview-code {
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  max-height: 350px;
+  overflow: auto;
+  color: var(--text);
+  transition: background 0.3s;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--muted);
+  margin-top: 4rem;
+}
+.empty-state .hint { margin-top: 0.5rem; font-size: 0.85rem; }
+
+/* BÚSQUEDA */
+.block.hidden { display: none; }
+
+@media (max-width: 1000px) {
+  .workspace { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+  .app-header { flex-direction: column; align-items: flex-start; }
+  .header-right { flex-wrap: wrap; gap: 0.5rem; }
+}

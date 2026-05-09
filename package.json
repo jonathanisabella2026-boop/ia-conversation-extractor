@@ -1,0 +1,107 @@
+{
+  "name": "ia-conversation-extractor",
+  "version": "1.0.0",
+  "description": "Extrae conversaciones con IA a Markdown estructurado — 100% offline by DIGITAL SolutJon",
+  "main": "main.js",
+  "author": {
+    "name": "DIGITAL SolutJon",
+    "email": "contact@digitalsolutjon.dev"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/tu-usuario/ia-conversation-extractor#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tu-usuario/ia-conversation-extractor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tu-usuario/ia-conversation-extractor/issues"
+  },
+  "keywords": [
+    "electron",
+    "markdown",
+    "chatgpt",
+    "claude",
+    "ai",
+    "conversation",
+    "export",
+    "offline",
+    "productivity",
+    "DIGITAL-SolutJon"
+  ],
+  "scripts": {
+    "start": "electron .",
+    "build": "npm run build:win && npm run build:mac && npm run build:linux",
+    "build:win": "electron-builder --win portable",
+    "build:mac": "electron-builder --mac dmg",
+    "build:linux": "electron-builder --linux AppImage",
+    "dist": "electron-builder",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "build": {
+    "appId": "com.digitalsolutjon.ia-extractor",
+    "productName": "IA Extractor DIGITAL SolutJon",
+    "copyright": "Copyright © 2026 DIGITAL SolutJon",
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*",
+      "assets/**/*",
+      "LICENSE",
+      "README.md"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": ["x64", "ia32"]
+        },
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "assets/icon.ico",
+      "publisherName": "DIGITAL SolutJon"
+    },
+    "mac": {
+      "target": ["dmg", "zip"],
+      "icon": "assets/icon.icns",
+      "category": "public.app-category.productivity",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false
+    },
+    "linux": {
+      "target": ["AppImage", "deb", "rpm"],
+      "icon": "assets/icon.png",
+      "category": "Office",
+      "maintainer": "DIGITAL SolutJon",
+      "vendor": "DIGITAL SolutJon",
+      "synopsis": "IA Conversation Extractor",
+      "description": "Convierte conversaciones con IA en Markdown estructurado offline"
+    },
+    "portable": {
+      "artifactName": "${productName}-${version}-Windows-Portable.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "IA Extractor"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "tu-usuario",
+      "repo": "ia-conversation-extractor",
+      "releaseType": "release"
+    }
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.0"
+  }
+}

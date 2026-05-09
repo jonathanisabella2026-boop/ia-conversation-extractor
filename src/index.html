@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IA Extractor - DIGITAL SolutJon</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="brand">
+      <span class="logo">📝</span>
+      <div>
+        <h1>IA Extractor</h1>
+        <small>desarrollado por DIGITAL SolutJon</small>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <button id="btnPaste" class="btn" title="Pegar desde portapapeles (Ctrl+Shift+V)">📋 Pegar</button>
+
+      <select id="templateSelect" class="btn-select">
+        <option value="all">📄 Plantilla: Completa</option>
+        <option value="tech">⚙ Técnica / Código</option>
+        <option value="creative">💡 Creativa / Brainstorming</option>
+        <option value="summary">📊 Resumen Ejecutivo</option>
+        <option value="tutorial">🎓 Tutorial Paso a Paso</option>
+      </select>
+
+      <button id="btnAnalyze" class="btn primary">🔍 Analizar</button>
+      <button id="btnOnlyAI" class="btn" title="Mostrar solo bloques de la IA">🤖 Solo IA</button>
+      <button id="btnOnlyUser" class="btn" title="Mostrar solo bloques del usuario">👤 Solo Usuario</button>
+      <button id="btnOnlyCode" class="btn" title="Mostrar solo código">&lt;/&gt; Solo Código</button>
+      <button id="btnClear" class="btn danger">🗑 Limpiar</button>
+      <button id="btnSave" class="btn success" title="Guardar como .md (Ctrl+S)">💾 Guardar .md</button>
+      <button id="btnTheme" class="btn" title="Cambiar tema (Ctrl+T)">🌓</button>
+    </div>
+  </header>
+
+  <div class="workspace">
+    <!-- PANEL IZQUIERDO -->
+    <div class="panel input-panel">
+      <div class="panel-header">
+        <span>📥 Conversación Original</span>
+        <span id="inputStats" class="stats"></span>
+      </div>
+      <div class="panel-body">
+        <textarea id="inputText" placeholder="Pega aquí la conversación completa...
+
+Soporta formatos de:
+• ChatGPT (You / ChatGPT)
+• Claude, Gemini, Copilot, DeepSeek
+• Texto plano con separadores
+
+Atajos:
+  Ctrl+Enter  → Analizar
+  Ctrl+Shift+V → Pegar desde portapapeles
+  Ctrl+S      → Guardar Markdown"></textarea>
+      </div>
+    </div>
+
+    <!-- PANEL DERECHO -->
+    <div class="panel output-panel">
+      <div class="panel-header">
+        <span>✂️ Bloques Detectados</span>
+        <div class="header-right">
+          <input type="text" id="searchBlocks" class="search-input" placeholder="🔍 Buscar bloques..." />
+          <span id="outputStats" class="stats"></span>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div id="blocksContainer" class="blocks-list">
+          <div class="empty-state">
+            <p>Esperando conversación...</p>
+            <p class="hint">Pega texto a la izquierda y pulsa <b>Analizar</b> o <b>📋 Pegar</b></p>
+          </div>
+        </div>
+
+        <div id="previewSection" class="preview-section" style="display:none;">
+          <div class="panel-header sub-header">
+            <span>👁 Vista Previa Markdown</span>
+            <div>
+              <button id="btnCopyPreview" class="btn small">📄 Copiar al portapapeles</button>
+              <button id="btnPreviewOnly" class="btn small">👁 Solo seleccionados</button>
+            </div>
+          </div>
+          <pre id="previewText" class="preview-code"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
