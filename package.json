@@ -92,12 +92,6 @@
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
       "shortcutName": "IA Extractor"
-    },
-    "publish": {
-      "provider": "github",
-      "owner": "tu-usuario",
-      "repo": "ia-conversation-extractor",
-      "releaseType": "release"
     }
   },
   "devDependencies": {
