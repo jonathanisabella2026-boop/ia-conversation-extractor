@@ -8,13 +8,13 @@
     "email": "contact@digitalsolutjon.dev"
   },
   "license": "MIT",
-  "homepage": "https://github.com/tu-usuario/ia-conversation-extractor#readme",
+  "homepage": "https://github.com/jonathanisabella2026-boop/ia-conversation-extractor#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tu-usuario/ia-conversation-extractor.git"
+    "url": "https://github.com/jonathanisabella2026-boop/ia-conversation-extractor.git"
   },
   "bugs": {
-    "url": "https://github.com/tu-usuario/ia-conversation-extractor/issues"
+    "url": "https://github.com/jonathanisabella2026-boop/ia-conversation-extractor/issues"
   },
   "keywords": [
     "electron",
@@ -30,11 +30,10 @@
   ],
   "scripts": {
     "start": "electron .",
-    "build": "npm run build:win && npm run build:mac && npm run build:linux",
-    "build:win": "electron-builder --win portable",
-    "build:mac": "electron-builder --mac dmg",
-    "build:linux": "electron-builder --linux AppImage",
-    "dist": "electron-builder",
+    "build": "electron-builder --publish=never",
+    "build:win": "electron-builder --win portable --publish=never",
+    "build:mac": "electron-builder --mac dmg --publish=never",
+    "build:linux": "electron-builder --linux AppImage --publish=never",
     "postinstall": "electron-builder install-app-deps"
   },
   "build": {
